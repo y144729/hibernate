@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	<hibernate-configuration>
+		<session-factory>
+			<property name="connection.driver_class">com.mysql.jdbc.Driver</property> 
+			<property name="connection.url">jdbc:mysql://localhost:3306/meng</property> 
+			<property name="connection.username">root</property> 
+			<property name="connection.password">123456</property>
+			<!--hibenate 可选属性  -->
+			<!--hibernate.show_sql:是否在控制台输出sql语句  true会  false 不会   -->
+			<property name="hibernate.show_sql">true</property>
+			<!--hibernate.format_sql:sql语句是否会自动换行   true会  false 不会  -->
+			<property name="hibernate.current_session_context_class"> thread</property>
+			<property name="hibernate.format_sql">true</property>
+			<!--hibernate.hbm2ddl.auto : 生产sql的策略
+					有四个值：
+	create：表示启动的时候先drop，再create (测试人员 准备标准测试数据)
+	create-drop: 也表示创建，只不过再系统关闭前执行一下drop  （测试程序是否正确）
+	update: 这个操作启动的时候会去检查schema是否一致，如果不一致会做scheme更新 （建表，更新表结构【只能加】）
+	validate: 启动时验证现有schema与你配置的hibernate是否一致，如果不一致就抛出异常，并不做更新 	
+						
+			  -->
+			<property name="hibernate.hbm2ddl.auto">update</property>
+			<!--hibernate.connection.autocommit :用户开启事务  -->
+			<property name="hibernate.connection.autocommit">true</property>
+			<!-- 映射文件的加载 -->
+			<mapping resource="com/bdqn/vo/Customer.hbm.xml" /> 
+		</session-factory>
+	</hibernate-configuration>
